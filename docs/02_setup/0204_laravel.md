@@ -1,28 +1,32 @@
-# 0203 Laravel プロジェクト作成
+# 0204 Laravel プロジェクト作成
 
-## 1. プロジェクトの作成
-
-前のステップでクローンした `contact-form` ディレクトリの中にいることを確認してください。
+## 1. Laravel installer のインストール
 
 ```bash
-pwd
-# /path/to/contact-form
+composer global require laravel/installer
 ```
-
-カレントディレクトリに Laravel プロジェクトを作成します。
-
-```bash
-composer create-project laravel/laravel .
-```
-
-> 📖 [Laravel インストール（公式ドキュメント）](https://readouble.com/laravel/12.x/ja/installation.html)
 
 ---
 
-## 2. Laravel Sail のインストール
+## 2. プロジェクトの作成
 
 ```bash
-composer require laravel/sail --dev
+laravel new contact-form --database=pgsql
+```
+
+コマンドを実行するといくつか質問されます。以下の通り選択してください。
+
+| 質問 | 選択 |
+|------|------|
+| Which starter kit would you like to install? | `No starter kit` |
+| Would you like to run the default database migrations? | `No` |
+
+---
+
+## 3. Laravel Sail のインストール
+
+```bash
+cd contact-form
 php artisan sail:install
 ```
 
@@ -45,9 +49,9 @@ Which services would you like to install? [mysql]:
 
 ---
 
-## 3. .env の確認
+## 4. .env の確認
 
-`sail:install` 後、`.env` のデータベース設定が自動で書き換えられます。
+`.env` のデータベース設定を確認してください。
 以下のようになっていれば OK です。
 
 ```env
@@ -61,12 +65,12 @@ DB_PASSWORD=password
 
 ---
 
-## 4. 最初のコミットとプッシュ
+## 5. 最初のコミットとプッシュ
 
-Laravel プロジェクトには最初から `.gitignore` が用意されています。
-そのまま最初のコミットを行い、GitHub にプッシュしてください。
+GitHub のリポジトリと接続して、最初のコミットをプッシュしてください。
 
 ```bash
+git remote add origin https://github.com/<ユーザー名>/contact-form.git
 git add .
 git commit -m "first commit"
 git push -u origin main
@@ -94,13 +98,14 @@ Laravel のプロジェクトを新規作成し、Docker で動かすための L
 
 | 用語 | 説明 |
 |------|------|
+| Laravel installer | `laravel new` コマンドでプロジェクトを作成できるツール |
 | Laravel | PHP の Web アプリケーションフレームワーク |
-| Composer | PHP のパッケージ管理ツール。`composer create-project` でプロジェクトを雛形から作成できる |
 | Laravel Sail | Docker を使って Laravel の開発環境を簡単に構築するツール |
 | .env | アプリケーションの設定ファイル。DB 接続情報などを記載する |
 | Mailpit | 開発環境でメール送信をテストするツール。実際には送信されず画面で確認できる |
+| `git remote add` | ローカルリポジトリとリモートリポジトリ（GitHub）を接続するコマンド |
 
 ### 参考資料
 
-- [Laravel 公式ドキュメント（日本語）](https://readouble.com/laravel/12.x/ja/installation.html)
+- [Laravel インストール（公式ドキュメント）](https://laravel.com/docs/12.x/installation)
 - [Laravel Sail 公式ドキュメント](https://readouble.com/laravel/12.x/ja/sail.html)
