@@ -1,10 +1,18 @@
-# 0102 Laravel プロジェクト作成
+# 0103 Laravel プロジェクト作成
 
 ## 1. プロジェクトの作成
 
+前のステップでクローンした `contact-form` ディレクトリの中にいることを確認してください。
+
 ```bash
-composer create-project laravel/laravel contact-form
-cd contact-form
+pwd
+# /path/to/contact-form
+```
+
+カレントディレクトリに Laravel プロジェクトを作成します。
+
+```bash
+composer create-project laravel/laravel .
 ```
 
 > 📖 [Laravel インストール（公式ドキュメント）](https://readouble.com/laravel/12.x/ja/installation.html)
@@ -53,12 +61,27 @@ DB_PASSWORD=password
 
 ---
 
+## 4. 最初のコミットとプッシュ
+
+Laravel プロジェクトには最初から `.gitignore` が用意されています。
+そのまま最初のコミットを行い、GitHub にプッシュしてください。
+
+```bash
+git add .
+git commit -m "first commit"
+git push -u origin main
+```
+
+---
+
 ## チェックリスト
 
-- [ ] `contact-form` ディレクトリが作成されている
+- [ ] `contact-form` ディレクトリに Laravel ファイル一式が作成されている
 - [ ] `vendor/bin/sail` ファイルが存在している
 - [ ] `.env` の `DB_CONNECTION` が `pgsql` になっている
 - [ ] `docker-compose.yml` に `mailpit` が含まれている
+- [ ] `git log --oneline` でコミットが確認できる
+- [ ] GitHub にプッシュされている
 
 ---
 
@@ -67,6 +90,7 @@ DB_PASSWORD=password
 ### 今何をしたか
 
 Laravel のプロジェクトを新規作成し、Docker で動かすための Laravel Sail を導入しました。
+また、コードを GitHub にプッシュしてバージョン管理を始めました。
 
 | 用語 | 説明 |
 |------|------|
